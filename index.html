@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Defino la información del sitio-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Demo web based on http://startbootstrap.com/">
+  <meta name="author" content="jfolivarl">
+
+  <title>Bootstrap - Demo Portfolio</title>
+  
+   <!-- Icono favicon -->
+   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+   <link rel="manifest" href="img/favicon/site.webmanifest">
+   <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+   <meta name="msapplication-TileColor" content="#da532c">
+   <meta name="theme-color" content="#ffffff">
+
+  <!-- Bootstrap CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Tipografias personalizadas -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+  <!-- CSS personalizado-->
+  <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Barra de navegación oculta -->
+  <a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="#page-top">Demo FEDICALVA</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#web">Información</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#portfolio">Portafolio</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#footer">Contacto</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead d-flex"><div class="display-topleft padding-large ">
+    <img src="./img/fedivalca-logo.png" alt="Universidad de Zaragoza" height="70" width="70">
+  </div>
+    <div class="container text-center my-auto">
+      <h1 class="mb-1 text-header">FEDIVALCA Webmapping</h1>
+      <h3 class="mb-5 text-subheader">
+        <em>Portfolio de cartografía de analisis de las comarcas de Valdejalón </em>
+      </h3>
+      
+    </div>
+    <div class="overlay"></div>
+  </header>
+
+  <!-- Sección de Información Web -->
+  <section class="content-section bg-light" id="web">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-10 mx-auto content-section-heading text-center" >
+          <h3 class="text-tertiary mb-0">Bootstrap</h3>
+          <h2>Información Web</h2>
+          <p class="lead mb-5">División en secciones, fácil integración Js, hojas CSS, elementos multimedia incrustados, etc.</p>
+          <a href="https://drive.google.com/file/d/1ulOpuwNCrz1JMTRXtRWI3CNz3WbKZayu/view?usp=sharing" class="text-subtitle" target="_blank">Distribución de la población por índices de Feminidad y porcentaje de Vejez</a><br>
+          <!-- <iframe width="100%" height="315" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="maps\qgis2web\index.html" style="border: 1px solid #eaeaea"></iframe> -->
+          <iframe width="100%" height="315" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="maps\map-7\index.html" style="border: 1px solid #eaeaea"></iframe>
+          </iframe>
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/3447174&color=%231e5b4b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/hipster-online" title="Hipster Online" target="_blank" style="color: #cccccc; text-decoration: none;">Hipster Online</a> · <a href="https://soundcloud.com/hipster-online/04-sweet-home-alabama" title="Sweet Home Alabama" target="_blank" style="color: #cccccc; text-decoration: none;">Sweet Home Alabama</a></div>
+          <a class="btn btn-primary btn-xl js-scroll-trigger col-lg-3 col-md-6 mb-5 mb-md-0" href="https://getbootstrap.com/docs/4.0/getting-started/introduction/">Más sobre Bootstrap</a>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Webmapping -->
+  <section class="content-section bg-primary text-white text-center" id="webmapping">
+    <div class="container">
+      <div class="content-section-heading">
+        <h3 class="text-secondary mb-0">Web mapping GIS</h3>
+        <h2 class="mb-5">Motivos para usarlo</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <a class="service-icon rounded-circle icon-emotsmile" href="https://leafletjs.com/examples/choropleth/" target="_blank" style="text-decoration:none;"></a>
+          </span>
+          <h4>
+            <strong>Sencillo</strong>
+          </h4>
+          <p class="text-faded mb-0">Intuitivo y en múltiples dispositivos <i class="far fa-hand-pointer"></i></p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <a class="service-icon rounded-circle icon-layers" href="https://leafletjs.com/plugins.html" target="_blank" style="text-decoration:none;"></a>
+          </span>
+          <h4>
+            <strong>Personalizable</strong>
+          </h4>
+          <p class="text-faded mb-0 ">Con muchas opciones y colaboración cruzada</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <a class="service-icon rounded-circle icon-people" href="https://leafletjs.com/examples/mobile/example.html" target="_blank" style="text-decoration:none;"></a>
+          </span>
+          <h4>
+            <strong>Publicable</strong>
+          </h4>
+          <p class="text-faded mb-0">Es muy fácil compartir un enlace  <i class="fas fa-share-alt-square"></i></p> 
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <a class="service-icon rounded-circle icon-map" href="https://stephsaephan.github.io/leaflet-map-example/" target="_blank" style="text-decoration:none;"></a>
+          </span>
+          <h4>
+            <strong>Potente</strong>
+          </h4>
+          <p class="text-faded mb-0">Análisis espacial en tiempo real</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Portfolio -->
+  <section class="content-section" id="portfolio">
+    <div class="container">
+      <div class="content-section-heading text-center">
+        <h3 class="text-tertiary mb-0">Portafolio</h3>
+        <h2 class="mb-5">Proyectos recientes</h2>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="https://i.imgur.com/9E4OnG3.png" target="_blank">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Demografía</h2>
+                <p class="mb-0">Índice de feminidad y porcentaje de vejez</p>
+              </span>
+            </span>
+            <img class="img-fluid" src="img/portfolio-1.png" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="https://drive.google.com/file/d/17yUaXR44IDY3aE8pLLvOY-Od6Wp1_Zzm/view?usp=sharing" target="_blank">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Análisis socioeconómico</h2>
+                <p class="mb-0">Densidad de la oferta turística</p>
+              </span>
+            </span>
+            <img class="img-fluid" src="img/portfolio-2.png" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="https://drive.google.com/open?id=1VLBRpQJdE9MB3LjICJlsDCm8KlHTFLHQ" target="_blank">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Teledetección aplicada</h2>
+                <p class="mb-0">Cobertura y/o uso del suelo</p>
+              </span>
+            </span>
+            <img class="img-fluid" src="img/portfolio-3.png" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="https://i.imgur.com/4qjfWJ6.png" target="_blank">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Ordenación del territorio</h2>
+                <p class="mb-0">Áreas de protección medioambiental</p>
+              </span>
+            </span>
+            <img class="img-fluid" src="img/portfolio-4.png" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Sección del Mapa de calor -->
+  <div class="content-section-heading text-center">
+    <h3 class="text-tertiary mb-0">Portafolio</h3>
+    <h2 class="mb-5">Cartografía interactiva</h2>
+    <a href="http://www.fao.org/ag/againfo/programmes/en/empres/ASF/situation_update.html" class="text-subtitle text-center" target="_blank">Mapa de calor de la Fiebre Africana Porcina en 2019</a><br>
+  </div>
+  <section class="map" id="viewer">
+    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="maps\leaflet\index.html" style="border: 1px solid #eaeaea"></iframe>
+  </section>
+
+  <!-- Pie de pagina, enlace al repositorio -->
+  <section id="footer">
+  <footer class="footer text-center">
+    <div class="container">
+      <ul class="list-inline mb-3">
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white" href="https://gis-juma.github.io/fedivalca-maps">
+            <i class="icon-paper-plane"></i>
+          </a>
+          </li>
+      </ul>
+      <p class="text-muted small mb-0">Copyright jfolivarl &copy; Demo website 2020</p>
+    </div>
+  </footer>
+</section>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Scripts personalizados de la plantilla -->
+  <script src="js/stylish-portfolio.min.js"></script>
+
+</body>
+
+</html>

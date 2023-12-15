@@ -4,8 +4,7 @@ FEDIVALCA webmapping portfolio is a web page, responsive, based on a [Bootstrap]
 
 ## Preview
 
-[![Stylish Portfolio Preview](./img/readme.png)](https://gis-juma.github.io/fedivalca-maps)
-[View Live Preview](https://gis-juma.github.io/fedivalca-maps)
+[![Stylish Portfolio Preview](./img/readme.jpg)](https://gis-juma.github.io/fedivalca-maps)
 
 
 ## Copyright and License

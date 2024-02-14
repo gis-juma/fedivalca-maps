@@ -1,238 +1,650 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+    <head>
+        <meta charset="utf-8">     
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/body.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
 
-<head>
-  <!-- Defino la información del sitio-->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Demo web based on http://startbootstrap.com/">
-  <meta name="author" content="jfolivarl">
-
-  <title>Bootstrap - Demo Portfolio</title>
-  
-   <!-- Icono favicon -->
-   <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
-   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
-   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
-   <link rel="manifest" href="img/favicon/site.webmanifest">
-   <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-   <meta name="msapplication-TileColor" content="#da532c">
-   <meta name="theme-color" content="#ffffff">
-
-  <!-- Bootstrap CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Tipografias personalizadas -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-
-  <!-- CSS personalizado-->
-  <link href="css/stylish-portfolio.css" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-  <!-- Barra de navegación oculta -->
-  <a class="menu-toggle rounded" href="#">
-    <i class="fas fa-bars"></i>
-  </a>
-  <nav id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a class="js-scroll-trigger" href="#page-top">Demo FEDICALVA</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#web">Información</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#portfolio">Portafolio</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#footer">Contacto</a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Header -->
-  <header class="masthead d-flex"><div class="display-topleft padding-large ">
-    <img src="./img/fedivalca-logo.png" alt="Universidad de Zaragoza" height="70" width="70">
-  </div>
-    <div class="container text-center my-auto">
-      <h1 class="mb-1 text-header">FEDIVALCA Webmapping</h1>
-      <h3 class="mb-5 text-subheader">
-        <em>Portfolio de cartografía de analisis de las comarcas de Valdejalón </em>
-      </h3>
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="css/navMap.css">
       
-    </div>
-    <div class="overlay"></div>
-  </header>
+        <style>
+            
+            html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
 
-  <!-- Sección de Información Web -->
-  <section class="content-section bg-light" id="web">
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-lg-10 mx-auto content-section-heading text-center" >
-          <h3 class="text-tertiary mb-0">Bootstrap</h3>
-          <h2>Información Web</h2>
-          <p class="lead mb-5">División en secciones, fácil integración Js, hojas CSS, elementos multimedia incrustados, etc.</p>
-          <a href="https://drive.google.com/file/d/1ulOpuwNCrz1JMTRXtRWI3CNz3WbKZayu/view?usp=sharing" class="text-subtitle" target="_blank">Distribución de la población por índices de Feminidad y porcentaje de Vejez</a><br>
-          <!-- <iframe width="100%" height="315" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="maps\qgis2web\index.html" style="border: 1px solid #eaeaea"></iframe> -->
-          <iframe width="100%" height="315" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="maps\map-7\index.html" style="border: 1px solid #eaeaea"></iframe>
-          </iframe>
-          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/3447174&color=%231e5b4b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/hipster-online" title="Hipster Online" target="_blank" style="color: #cccccc; text-decoration: none;">Hipster Online</a> · <a href="https://soundcloud.com/hipster-online/04-sweet-home-alabama" title="Sweet Home Alabama" target="_blank" style="color: #cccccc; text-decoration: none;">Sweet Home Alabama</a></div>
-          <a class="btn btn-primary btn-xl js-scroll-trigger col-lg-3 col-md-6 mb-5 mb-md-0" href="https://getbootstrap.com/docs/4.0/getting-started/introduction/">Más sobre Bootstrap</a>
-          
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        </style>
+
+        <title>Administrativo</title>
+    </head>
+    <body>
+        <nav>
+            <!-- Menú de escritorio -->
+            <ul>
+                <li><a href="Index.html">Administrativo</a></li>
+                <li><a href="Usos_del_suelo.html">Usos del Suelo</a></li>
+                <li><a href="Ambitos_de_Proteccion.html">Zonas de Protección</a></li>
+                <li><a href="Empresas.html">Empresas</a></li>
+                <li><a href="Turismo.html">Turismo</a></li>
+                <li><a href="indices_demograficos.html">Índices (Vejez y Feminidad)</a></li>
+                <li><a href="Indices_de_la_Poblacion_activa.html">Índices (Población Activa)</a></li>
+            </ul>
+            <script>
+                function toggleMenu() {
+                    var navUl = document.querySelector('nav ul');
+                    navUl.classList.toggle('show');
+                }
+            </script>
+            <!-- Icono de hamburguesa para pantallas pequeñas -->
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        </nav>
+    
+
+        <div id="map">
         </div>
-      </div>
-    </div>
-  </section>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/MunicipiosFEDIVALCA_2.js"></script>
+        <script src="data/ComarcasFEDIVALCA_3.js"></script>
+        <script src="data/IDensidadhabKm2_4.js"></script>
+        <script src="data/NucleosdePoblacinFEDIVALCA_5.js"></script>
+        <script src="data/Tamaodelapoblacin_6.js"></script>
+        
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        });
 
-  <!-- Sección Webmapping -->
-  <section class="content-section bg-primary text-white text-center" id="webmapping">
-    <div class="container">
-      <div class="content-section-heading">
-        <h3 class="text-secondary mb-0">Web mapping GIS</h3>
-        <h2 class="mb-5">Motivos para usarlo</h2>
-      </div>
-      <div class="row">
-        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <a class="service-icon rounded-circle icon-emotsmile" href="https://leafletjs.com/examples/choropleth/" target="_blank" style="text-decoration:none;"></a>
-          </span>
-          <h4>
-            <strong>Sencillo</strong>
-          </h4>
-          <p class="text-faded mb-0">Intuitivo y en múltiples dispositivos <i class="far fa-hand-pointer"></i></p>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <a class="service-icon rounded-circle icon-layers" href="https://leafletjs.com/plugins.html" target="_blank" style="text-decoration:none;"></a>
-          </span>
-          <h4>
-            <strong>Personalizable</strong>
-          </h4>
-          <p class="text-faded mb-0 ">Con muchas opciones y colaboración cruzada</p>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <a class="service-icon rounded-circle icon-people" href="https://leafletjs.com/examples/mobile/example.html" target="_blank" style="text-decoration:none;"></a>
-          </span>
-          <h4>
-            <strong>Publicable</strong>
-          </h4>
-          <p class="text-faded mb-0">Es muy fácil compartir un enlace  <i class="fas fa-share-alt-square"></i></p> 
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <a class="service-icon rounded-circle icon-map" href="https://stephsaephan.github.io/leaflet-map-example/" target="_blank" style="text-decoration:none;"></a>
-          </span>
-          <h4>
-            <strong>Potente</strong>
-          </h4>
-          <p class="text-faded mb-0">Análisis espacial en tiempo real</p>
-        </div>
-      </div>
-    </div>
-  </section>
+// Resto del código para configurar el mapa
+var hash = new L.Hash(map);
+map.attributionControl.setPrefix('<a href="https://www.linkedin.com/in/j-f-olivar-londo%C3%B1o" target="_blank"><strong>Autor: Juan Felipe Olivar Londoño</strong></a>  &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
 
-  <!-- Sección de Portfolio -->
-  <section class="content-section" id="portfolio">
-    <div class="container">
-      <div class="content-section-heading text-center">
-        <h3 class="text-tertiary mb-0">Portafolio</h3>
-        <h2 class="mb-5">Proyectos recientes</h2>
-      </div>
-      <div class="row no-gutters">
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="https://i.imgur.com/9E4OnG3.png" target="_blank">
-            <span class="caption">
-              <span class="caption-content">
-                <h2>Demografía</h2>
-                <p class="mb-0">Índice de feminidad y porcentaje de vejez</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="img/portfolio-1.png" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="https://drive.google.com/file/d/17yUaXR44IDY3aE8pLLvOY-Od6Wp1_Zzm/view?usp=sharing" target="_blank">
-            <span class="caption">
-              <span class="caption-content">
-                <h2>Análisis socioeconómico</h2>
-                <p class="mb-0">Densidad de la oferta turística</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="img/portfolio-2.png" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="https://drive.google.com/open?id=1VLBRpQJdE9MB3LjICJlsDCm8KlHTFLHQ" target="_blank">
-            <span class="caption">
-              <span class="caption-content">
-                <h2>Teledetección aplicada</h2>
-                <p class="mb-0">Cobertura y/o uso del suelo</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="img/portfolio-3.png" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="https://i.imgur.com/4qjfWJ6.png" target="_blank">
-            <span class="caption">
-              <span class="caption-content">
-                <h2>Ordenación del territorio</h2>
-                <p class="mb-0">Áreas de protección medioambiental</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="img/portfolio-4.png" alt="">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Sección del Mapa de calor -->
-  <div class="content-section-heading text-center">
-    <h3 class="text-tertiary mb-0">Portafolio</h3>
-    <h2 class="mb-5">Cartografía interactiva</h2>
-    <a href="http://www.fao.org/ag/againfo/programmes/en/empres/ASF/situation_update.html" class="text-subtitle text-center" target="_blank">Mapa de calor de la Fiebre Africana Porcina en 2019</a><br>
-  </div>
-  <section class="map" id="viewer">
-    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="maps\leaflet\index.html" style="border: 1px solid #eaeaea"></iframe>
-  </section>
+var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+var bounds_group = new L.featureGroup([]);
 
-  <!-- Pie de pagina, enlace al repositorio -->
-  <section id="footer">
-  <footer class="footer text-center">
-    <div class="container">
-      <ul class="list-inline mb-3">
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white" href="https://gis-juma.github.io/fedivalca-maps">
-            <i class="icon-paper-plane"></i>
-          </a>
-          </li>
-      </ul>
-      <p class="text-muted small mb-0">Copyright jfolivarl &copy; Demo website 2020</p>
-    </div>
-  </footer>
-</section>
+function setBounds() {
+    if (bounds_group.getLayers().length) {
+        map.fitBounds(bounds_group.getBounds());
+    }
+}
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+map.createPane('pane_OSMStandard_0');
+map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    pane: 'pane_OSMStandard_0',
+    opacity: 1.0,
+    attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+    minZoom: 1,
+    maxZoom: 28,
+    minNativeZoom: 0,
+    maxNativeZoom: 19
+});
+layer_OSMStandard_0;
+map.addLayer(layer_OSMStandard_0);
 
-  <!-- Bootstrap JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+map.createPane('pane_Fondogris_1');
+map.getPane('pane_Fondogris_1').style.zIndex = 401;
+var layer_Fondogris_1 = L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    pane: 'pane_Fondogris_1',
+    opacity: 1.0,
+    attribution: '',
+    minZoom: 1,
+    maxZoom: 28,
+    minNativeZoom: 0,
+    maxNativeZoom: 20
+});
+layer_Fondogris_1;
+map.addLayer(layer_Fondogris_1);
 
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+var watermark = L.Control.extend({
+  onAdd: function(map) {
+    var watermarkDiv = L.DomUtil.create('div', 'watermark');
+    watermarkDiv.innerHTML = '<img src="legend/LOGOS.png" style="width: 280px;">'; // Ajusta el tamaño según lo necesites
+    watermarkDiv.style.position = 'absolute';
+    watermarkDiv.style.bottom = '55px'; // Ajusta la distancia desde abajo
+    watermarkDiv.style.right = '20px'; // Ajusta la distancia desde la derecha
+    watermarkDiv.style.pointerEvents = 'none';
+    return watermarkDiv;
+  },
+  onRemove: function(map) {
+    // Nothing to do here
+  }
+});
 
-  <!-- Scripts personalizados de la plantilla -->
-  <script src="js/stylish-portfolio.min.js"></script>
+L.control.watermark = function(opts) {
+  return new watermark(opts);
+}
 
-</body>
+L.control.watermark({ position: 'bottomright' }).addTo(map);
 
+
+
+        function pop_MunicipiosFEDIVALCA_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Municipio</strong><br />' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Territorio'] !== null ? autolinker.link(feature.properties['Territorio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tamaño (Km2)</th>\
+                        <td>' + (feature.properties['Tamaño (Km2)'] !== null ? autolinker.link(feature.properties['Tamaño (Km2)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Población</th>\
+                        <td>' + (feature.properties['Habitantes'] !== null ? autolinker.link(feature.properties['Habitantes'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Mujeres</th>\
+                        <td>' + (feature.properties['Mujeres'] !== null ? autolinker.link(feature.properties['Mujeres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Hombres</th>\
+                        <td>' + (feature.properties['Hombres'] !== null ? autolinker.link(feature.properties['Hombres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MunicipiosFEDIVALCA_2_0() {
+            return {
+                pane: 'pane_MunicipiosFEDIVALCA_2',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,255,0.0)',
+                interactive: true,
+            }
+        }
+        function style_MunicipiosFEDIVALCA_2_1() {
+            return {
+                pane: 'pane_MunicipiosFEDIVALCA_2',
+                opacity: 1,
+                color: 'rgba(171,171,171,0.8352941176470589)',
+                dashArray: '1,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(171,171,171,0.25098039215686274)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_MunicipiosFEDIVALCA_2');
+        map.getPane('pane_MunicipiosFEDIVALCA_2').style.zIndex = 402;
+        map.getPane('pane_MunicipiosFEDIVALCA_2').style['mix-blend-mode'] = 'normal';
+        var layer_MunicipiosFEDIVALCA_2 = new L.geoJson.multiStyle(json_MunicipiosFEDIVALCA_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MunicipiosFEDIVALCA_2',
+            layerName: 'layer_MunicipiosFEDIVALCA_2',
+            pane: 'pane_MunicipiosFEDIVALCA_2',
+            onEachFeature: pop_MunicipiosFEDIVALCA_2,
+            styles: [style_MunicipiosFEDIVALCA_2_0,style_MunicipiosFEDIVALCA_2_1,]
+        });
+        bounds_group.addLayer(layer_MunicipiosFEDIVALCA_2);
+        map.addLayer(layer_MunicipiosFEDIVALCA_2);
+        function pop_ComarcasFEDIVALCA_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ComarcasFEDIVALCA_3_0() {
+            return {
+                pane: 'pane_ComarcasFEDIVALCA_3',
+                opacity: 1,
+                color: 'rgba(243,211,49,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(243,211,49,0.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_ComarcasFEDIVALCA_3');
+        map.getPane('pane_ComarcasFEDIVALCA_3').style.zIndex = 403;
+        map.getPane('pane_ComarcasFEDIVALCA_3').style['mix-blend-mode'] = 'normal';
+        var layer_ComarcasFEDIVALCA_3 = new L.geoJson(json_ComarcasFEDIVALCA_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_ComarcasFEDIVALCA_3',
+            layerName: 'layer_ComarcasFEDIVALCA_3',
+            pane: 'pane_ComarcasFEDIVALCA_3',
+            onEachFeature: pop_ComarcasFEDIVALCA_3,
+            style: style_ComarcasFEDIVALCA_3_0,
+        });
+        bounds_group.addLayer(layer_ComarcasFEDIVALCA_3);
+        map.addLayer(layer_ComarcasFEDIVALCA_3);
+        function pop_IDensidadhabKm2_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Municipio</strong><br />' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>I. Densidad (hab/Km2)</strong><br />' + (feature.properties['I. Densidad (hab/Km2)'] !== null ? autolinker.link(feature.properties['I. Densidad (hab/Km2)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Descripción</strong><br />' + (feature.properties['Descripcion'] !== null ? autolinker.link(feature.properties['Descripcion'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_IDensidadhabKm2_4_0(feature) {
+            if (feature.properties['I. Densidad (hab/Km2)'] >= 2.337305 && feature.properties['I. Densidad (hab/Km2)'] <= 9.290417 ) {
+                return {
+                pane: 'pane_IDensidadhabKm2_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,240,217,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['I. Densidad (hab/Km2)'] >= 9.290417 && feature.properties['I. Densidad (hab/Km2)'] <= 19.060052 ) {
+                return {
+                pane: 'pane_IDensidadhabKm2_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,204,138,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['I. Densidad (hab/Km2)'] >= 19.060052 && feature.properties['I. Densidad (hab/Km2)'] <= 32.148751 ) {
+                return {
+                pane: 'pane_IDensidadhabKm2_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,141,89,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['I. Densidad (hab/Km2)'] >= 32.148751 && feature.properties['I. Densidad (hab/Km2)'] <= 60.326311 ) {
+                return {
+                pane: 'pane_IDensidadhabKm2_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,74,51,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['I. Densidad (hab/Km2)'] >= 60.326311 && feature.properties['I. Densidad (hab/Km2)'] <= 140.744006 ) {
+                return {
+                pane: 'pane_IDensidadhabKm2_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(179,0,0,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_IDensidadhabKm2_4');
+        map.getPane('pane_IDensidadhabKm2_4').style.zIndex = 404;
+        map.getPane('pane_IDensidadhabKm2_4').style['mix-blend-mode'] = 'normal';
+        var layer_IDensidadhabKm2_4 = new L.geoJson(json_IDensidadhabKm2_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_IDensidadhabKm2_4',
+            layerName: 'layer_IDensidadhabKm2_4',
+            pane: 'pane_IDensidadhabKm2_4',
+            onEachFeature: pop_IDensidadhabKm2_4,
+            style: style_IDensidadhabKm2_4_0,
+        });
+        bounds_group.addLayer(layer_IDensidadhabKm2_4);
+        function pop_NucleosdePoblacinFEDIVALCA_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Termino municipal'] !== null ? autolinker.link(feature.properties['Termino municipal'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Codigo INE</th>\
+                        <td>' + (feature.properties['Codigo Postal'] !== null ? autolinker.link(feature.properties['Codigo Postal'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_NucleosdePoblacinFEDIVALCA_5_0() {
+            return {
+                pane: 'pane_NucleosdePoblacinFEDIVALCA_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,152,152,0.47058823529411764)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_NucleosdePoblacinFEDIVALCA_5');
+        map.getPane('pane_NucleosdePoblacinFEDIVALCA_5').style.zIndex = 405;
+        map.getPane('pane_NucleosdePoblacinFEDIVALCA_5').style['mix-blend-mode'] = 'normal';
+        var layer_NucleosdePoblacinFEDIVALCA_5 = new L.geoJson(json_NucleosdePoblacinFEDIVALCA_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_NucleosdePoblacinFEDIVALCA_5',
+            layerName: 'layer_NucleosdePoblacinFEDIVALCA_5',
+            pane: 'pane_NucleosdePoblacinFEDIVALCA_5',
+            onEachFeature: pop_NucleosdePoblacinFEDIVALCA_5,
+            style: style_NucleosdePoblacinFEDIVALCA_5_0,
+        });
+        bounds_group.addLayer(layer_NucleosdePoblacinFEDIVALCA_5);
+        map.addLayer(layer_NucleosdePoblacinFEDIVALCA_5);
+        function pop_Tamaodelapoblacin_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Municipio</strong><br />' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Poblacion</th>\
+                        <td>' + (feature.properties['Poblacion'] !== null ? autolinker.link(feature.properties['Poblacion'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Mujeres</th>\
+                        <td>' + (feature.properties['Mujeres'] !== null ? autolinker.link(feature.properties['Mujeres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Hombres</th>\
+                        <td>' + (feature.properties['Hombres'] !== null ? autolinker.link(feature.properties['Hombres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Tamaodelapoblacin_6_0(feature) {
+            if (feature.properties['Poblacion'] >= 50.000000 && feature.properties['Poblacion'] <= 500.000000 ) {
+                return {
+                pane: 'pane_Tamaodelapoblacin_6',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/Tamaodelapoblacin_6.svg',
+            iconSize: [32.68, 32.68]
+        }),
+                interactive: true,
+            }
+            }
+            if (feature.properties['Poblacion'] >= 500.000000 && feature.properties['Poblacion'] <= 1500.000000 ) {
+                return {
+                pane: 'pane_Tamaodelapoblacin_6',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/Tamaodelapoblacin_6.svg',
+            iconSize: [49.65346, 49.65346]
+        }),
+                interactive: true,
+            }
+            }
+            if (feature.properties['Poblacion'] >= 1500.000000 && feature.properties['Poblacion'] <= 5000.000000 ) {
+                return {
+                pane: 'pane_Tamaodelapoblacin_6',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/Tamaodelapoblacin_6.svg',
+            iconSize: [66.62654, 66.62654]
+        }),
+                interactive: true,
+            }
+            }
+            if (feature.properties['Poblacion'] >= 5000.000000 && feature.properties['Poblacion'] <= 7983.000000 ) {
+                return {
+                pane: 'pane_Tamaodelapoblacin_6',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/Tamaodelapoblacin_6.svg',
+            iconSize: [83.6, 83.6]
+        }),
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Tamaodelapoblacin_6');
+        map.getPane('pane_Tamaodelapoblacin_6').style.zIndex = 406;
+        map.getPane('pane_Tamaodelapoblacin_6').style['mix-blend-mode'] = 'normal';
+        var layer_Tamaodelapoblacin_6 = new L.geoJson(json_Tamaodelapoblacin_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Tamaodelapoblacin_6',
+            layerName: 'layer_Tamaodelapoblacin_6',
+            pane: 'pane_Tamaodelapoblacin_6',
+            onEachFeature: pop_Tamaodelapoblacin_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Tamaodelapoblacin_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Tamaodelapoblacin_6);
+        map.addLayer(layer_Tamaodelapoblacin_6);
+        map.on("zoomend", function(e) {
+            if (map.getZoom() <= 16 && map.getZoom() >= 2) {
+                map.addLayer(layer_Fondogris_1);
+            } else if (map.getZoom() > 16 || map.getZoom() < 2) {
+                map.removeLayer(layer_Fondogris_1);
+            }
+        });
+            if (map.getZoom() <= 16 && map.getZoom() >= 2) {
+                map.addLayer(layer_Fondogris_1);
+            } else if (map.getZoom() > 16 || map.getZoom() < 2) {
+                map.removeLayer(layer_Fondogris_1);
+            }
+
+
+
+
+     
+
+var i = 0;
+        layer_Tamaodelapoblacin_6.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Municipio'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'Arial Nova Cond Light\', sans-serif;">' + layer.feature.properties['Municipio']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Tamaodelapoblacin_6'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        map.addControl(new L.Control.Search({
+            layer: layer_MunicipiosFEDIVALCA_2,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'Municipio'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        resetLabels([layer_IDensidadhabKm2_4,layer_NucleosdePoblacinFEDIVALCA_5,layer_Tamaodelapoblacin_6]);
+        map.on("zoomend", function(){
+            resetLabels([layer_IDensidadhabKm2_4,layer_NucleosdePoblacinFEDIVALCA_5,layer_Tamaodelapoblacin_6]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_IDensidadhabKm2_4,layer_NucleosdePoblacinFEDIVALCA_5,layer_Tamaodelapoblacin_6]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_IDensidadhabKm2_4,layer_NucleosdePoblacinFEDIVALCA_5,layer_Tamaodelapoblacin_6]);
+        });
+
+
+
+
+
+
+
+
+
+
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topright',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Busca una dirección';
+
+
+
+
+
+        
+
+   
+  
+      // Define el HTML de tu leyenda con un título personalizado y los elementos del control de capas
+      var legendHtml = '<div class="info legend" style="background-color: #ffffff; padding: 15px 10px;">' +
+      '<div class="legend-header" onclick="toggleLegend()" style="font-size: 16px;"><span><b>Leyenda</b></span></div>' +
+      '<div class="legend-content">' +
+      '<p><input type="checkbox" id="layer_Tamaodelapoblacin_6" onclick="toggleLayer(this.id)"checked> Tamaño de la población<br /><br /><img src="legend/Tamano.svg"></p>' +
+      '<p><input type="checkbox" id="layer_IDensidadhabKm2_4" onclick="toggleLayer(this.id)"> I. Densidad (hab/Km2)<br />' +
+      '<table style="margin: 0 auto;">' +
+      '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDensidadhabKm2_4_23930.png" /></td><td style="font-size: 12px; text-align: center;">2,3 - 9,3</td></tr>' +
+      '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDensidadhabKm2_4_931911.png" /></td><td style="font-size: 12px; text-align: center;">9,3 - 19,1</td></tr>' +
+      '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDensidadhabKm2_4_1913212.png" /></td><td style="font-size: 12px; text-align: center;">19,1 - 32,1</td></tr>' +
+      '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDensidadhabKm2_4_3216033.png" /></td><td style="font-size: 12px; text-align: center;">32,1 - 60,3</td></tr>' +
+      '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDensidadhabKm2_4_60314074.png" /></td><td style="font-size: 12px; text-align: center;">60,3 - 140,7</td></tr>' +
+      '</table></p>' +
+      '<p><input type="checkbox" id="layer_NucleosdePoblacinFEDIVALCA_5" onclick="toggleLayer(this.id)"checked> Núcleos de población<br /><br /><img src="legend/NucleosdePoblacinFEDIVALCA_5.png" style="width: 28px;"></p>' +
+      '<p><input type="checkbox" id="layer_MunicipiosFEDIVALCA_2" onclick="toggleLayer(this.id)"checked> Municipios<br /><br /><img src="legend/MunicipiosFEDIVALCA_2.png" style="width: 28px;"></p>' +
+      '<p><input type="checkbox" id="layer_ComarcasFEDIVALCA_3" onclick="toggleLayer(this.id)"checked> Comarcas<br /><br /><img src="legend/ComarcasFEDIVALCA_3.png" style="width: 28px;"></p>' +
+      '<p><input type="checkbox" id="layer_Fondogris_1" onclick="toggleLayer(this.id)"checked> Fondo gris<br /><img src="legend/FONDO.svg" style="width: 75px;"></p>' +
+     
+      '</div>' +
+      '</div>';
+  
+  
+  
+  // Crea un control personalizado de Leaflet que incluye el HTML de la leyenda y el control de capas
+  var combinedControl = L.control({
+      position: 'topleft'
+  });
+  
+  combinedControl.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'combined-legend');
+      div.innerHTML = legendHtml;
+      return div;
+  };
+  
+  // Agrega el control combinado al mapa
+  combinedControl.addTo(map);
+  
+  // Define una función para alternar la visibilidad de las capas
+  function toggleLayer(layerId) {
+      var layer = eval(layerId);
+      if (map.hasLayer(layer)) {
+          map.removeLayer(layer);
+      } else {
+          map.addLayer(layer);
+      }
+  }
+  
+  // Define una función para alternar la apertura y el cierre de la leyenda
+  function toggleLegend() {
+      var legend = document.querySelector('.legend-content');
+      if (legend.style.display === 'none' || legend.style.display === '') {
+          legend.style.display = 'block';
+      } else {
+          legend.style.display = 'none';
+      }
+  }
+  
+  // CSS para hacer el control colapsable y responsive
+  var css = '.combined-legend { max-width: 300px; height: 350px; overflow-y: auto; text-align: center; }' +
+      '@media only screen and (max-width: 800px) { .combined-legend .legend-content { display: none; } .combined-legend.collapsed .legend-content { display: block; } }' +
+      '.combined-legend.collapsed .legend-content { display: none; }' +
+      '.legend-header { cursor: pointer; }';
+  var style = document.createElement('style');
+  style.type = 'text/css';
+  if (style.styleSheet) style.styleSheet.cssText = css;
+  else style.appendChild(document.createTextNode(css));
+  document.getElementsByTagName('head')[0].appendChild(style);
+        setBounds();
+      
+        </script>
+    </body>
 </html>

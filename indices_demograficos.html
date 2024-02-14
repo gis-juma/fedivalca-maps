@@ -125,7 +125,7 @@ map.addLayer(layer_Fondogris_1);
 var watermark = L.Control.extend({
   onAdd: function(map) {
     var watermarkDiv = L.DomUtil.create('div', 'watermark');
-    watermarkDiv.innerHTML = '<img src="legend/LOGOS.png" style="width: 280px;">'; // Ajusta el tamaño según lo necesites
+    watermarkDiv.innerHTML = '<img src="legend/logos.png" style="width: 280px;">'; // Ajusta el tamaño según lo necesites
     watermarkDiv.style.position = 'absolute';
     watermarkDiv.style.bottom = '55px'; // Ajusta la distancia desde abajo
     watermarkDiv.style.right = '20px'; // Ajusta la distancia desde la derecha
@@ -1183,7 +1183,7 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
     '<div class="legend-content"><br>' +
 
     // vs leyenda
-    '<tr><td style="text-align: center;"><img src="legend/FVSV.svg";"></td></tr>'+
+    '<tr><td style="text-align: center;"><img src="legend/fvsv.svg";"></td></tr>'+
     // Población
     '<br><table style="margin: 0 auto; border-collapse: collapse; border-spacing: 0; border: 0.1px solid #ccc; font-size: 11px; color: #666; background-color: #f9f9f9;"><br>' +
     '<tr><td style="padding: 5px; text-align: left;"><input type="checkbox" id="layer_PoblacinmayoritariaFemeninaEnvejecida_12" onclick="toggleLayer(this.id)" checked> Población: Femenina-Envejecida</td></tr>' +

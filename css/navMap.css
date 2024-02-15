@@ -3,6 +3,7 @@ nav {
     background-color: #2c2c2cf9;
     text-align: center;
     padding: 10px 0;
+    text-decoration: none;
     
 }
 
@@ -20,7 +21,7 @@ nav a {
     text-decoration: none;
     padding: 10px 15px;
     display: block;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.9s ease;
 }
 
 nav a:hover {
@@ -43,7 +44,7 @@ nav a:hover {
         flex-direction: column;
         position: absolute;
         top: 60px;
-        left: 0;
+
         width: 100%;
         padding: 0;
         background-color: #2c2c2cf9;
@@ -73,7 +74,7 @@ nav a:hover {
         flex-direction: column;
         position: absolute;
         top: 60px;
-        left: 0;
+
         width: 100%;
         background-color: #2c2c2cf9;
         z-index: 9999;

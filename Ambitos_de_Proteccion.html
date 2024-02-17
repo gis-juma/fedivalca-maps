@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">     
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/navMap.css">
+        
+        <title> Ámbitos de Protección</title>
+    </head>
+    <body>
+        <nav>
+            <!-- Menú de escritorio -->
+            <ul>
+                <li><a href="index.html">Administrativo</a></li>
+                <li><a href="usos_del_suelo.html">Usos del Suelo</a></li>
+                <li><a href="ambitos_de_proteccion.html">Zonas de Protección</a></li>
+                <li><a href="empresas.html">Empresas</a></li>
+                <li><a href="turismo.html">Turismo</a></li>
+                <li><a href="indices_demograficos.html">Índices (Vejez y Feminidad)</a></li>
+                <li><a href="indices_de_la_poblacion_activa.html">Índices (Población Activa)</a></li>
+            </ul>
+            <script>
+                function toggleMenu() {
+                    var navUl = document.querySelector('nav ul');
+                    navUl.classList.toggle('show');
+                }
+            </script>
+            <!-- Icono de hamburguesa para pantallas pequeñas -->
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        </nav>
+
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/MunicipiosFEDIVALCA_2.js"></script>
+        <script src="data/reasprioritarias_3.js"></script>
+        <script src="data/ZEC_4.js"></script>
+        <script src="data/Zepas_5.js"></script>
+        <script src="data/NucleosdePoblacinFEDIVALCA_6.js"></script>
+        <script src="data/ComarcasFEDIVALCA_7.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        })
+       
+       
+// Resto del código para configurar el mapa
+var hash = new L.Hash(map);
+map.attributionControl.setPrefix('<a href="https://www.linkedin.com/in/j-f-olivar-londo%C3%B1o" target="_blank"><strong>Autor: Juan Felipe Olivar Londoño</strong></a>  &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet - qgis2web</a> &middot; <a href="https://qgis.org">QGIS</a>');
+
+var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+var bounds_group = new L.featureGroup([]);
+
+function setBounds() {
+    if (bounds_group.getLayers().length) {
+        map.fitBounds(bounds_group.getBounds());
+    }
+}
+
+map.createPane('pane_OSMStandard_0');
+map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    pane: 'pane_OSMStandard_0',
+    opacity: 1.0,
+    attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+    minZoom: 1,
+    maxZoom: 28,
+    minNativeZoom: 0,
+    maxNativeZoom: 19
+});
+layer_OSMStandard_0;
+map.addLayer(layer_OSMStandard_0);
+
+map.createPane('pane_Fondogris_1');
+map.getPane('pane_Fondogris_1').style.zIndex = 401;
+var layer_Fondogris_1 = L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    pane: 'pane_Fondogris_1',
+    opacity: 1.0,
+    attribution: '',
+    minZoom: 1,
+    maxZoom: 28,
+    minNativeZoom: 0,
+    maxNativeZoom: 20
+});
+layer_Fondogris_1;
+map.addLayer(layer_Fondogris_1);
+
+var watermark = L.Control.extend({
+  onAdd: function(map) {
+    var watermarkDiv = L.DomUtil.create('div', 'watermark');
+    watermarkDiv.innerHTML = '<img src="legend/logos.png" style="width: 50%;">'; // Cambia el nombre de la imagen y ajusta el tamaño
+    watermarkDiv.style.position = 'absolute';
+    watermarkDiv.style.bottom = '2%'; // Ajusta la distancia desde abajo
+    watermarkDiv.style.right = '2%'; // Ajusta la distancia desde la derecha
+    watermarkDiv.style.paddingBottom = '28px'; // Ajusta el padding inferior
+    watermarkDiv.style.textAlign = 'right'; // Alinea el contenido a la derecha
+    watermarkDiv.style.pointerEvents = 'none';
+    return watermarkDiv;
+  },
+  onRemove: function(map) {
+    // Nothing to do here
+  }
+});
+
+
+var watermark = L.Control.extend({
+  onAdd: function(map) {
+    var watermarkDiv = L.DomUtil.create('div', 'watermark');
+    watermarkDiv.innerHTML = '<img src="legend/logos.png" style="width: 55%;">'; // Cambia el nombre de la imagen y ajusta el tamaño
+    watermarkDiv.style.position = 'absolute';
+    watermarkDiv.style.bottom = '2%'; // Ajusta la distancia desde abajo
+    watermarkDiv.style.right = '2%'; // Ajusta la distancia desde la derecha
+    watermarkDiv.style.paddingBottom = '28px'; // Ajusta el padding inferior
+    watermarkDiv.style.textAlign = 'right'; // Alinea el contenido a la derecha
+    watermarkDiv.style.pointerEvents = 'none';
+    return watermarkDiv;
+  },
+  onRemove: function(map) {
+    // Nothing to do here
+  }
+});
+
+L.control.watermark = function(opts) {
+  return new watermark(opts);
+}
+
+L.control.watermark({ position: 'bottomright' }).addTo(map);
+
+
+
+
+        function pop_MunicipiosFEDIVALCA_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Municipio</strong><br />' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Territorio'] !== null ? autolinker.link(feature.properties['Territorio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tamaño (Km2)</th>\
+                        <td>' + (feature.properties['Tamaño (Km2)'] !== null ? autolinker.link(feature.properties['Tamaño (Km2)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Población</th>\
+                        <td>' + (feature.properties['Habitantes'] !== null ? autolinker.link(feature.properties['Habitantes'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Mujeres</th>\
+                        <td>' + (feature.properties['Mujeres'] !== null ? autolinker.link(feature.properties['Mujeres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Hombres</th>\
+                        <td>' + (feature.properties['Hombres'] !== null ? autolinker.link(feature.properties['Hombres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MunicipiosFEDIVALCA_2_0() {
+            return {
+                pane: 'pane_MunicipiosFEDIVALCA_2',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,255,0.0)',
+                interactive: true,
+            }
+        }
+        function style_MunicipiosFEDIVALCA_2_1() {
+            return {
+                pane: 'pane_MunicipiosFEDIVALCA_2',
+                opacity: 1,
+                color: 'rgba(171,171,171,0.8352941176470589)',
+                dashArray: '1,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(171,171,171,0.25098039215686274)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_MunicipiosFEDIVALCA_2');
+        map.getPane('pane_MunicipiosFEDIVALCA_2').style.zIndex = 402;
+        map.getPane('pane_MunicipiosFEDIVALCA_2').style['mix-blend-mode'] = 'normal';
+        var layer_MunicipiosFEDIVALCA_2 = new L.geoJson.multiStyle(json_MunicipiosFEDIVALCA_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MunicipiosFEDIVALCA_2',
+            layerName: 'layer_MunicipiosFEDIVALCA_2',
+            pane: 'pane_MunicipiosFEDIVALCA_2',
+            onEachFeature: pop_MunicipiosFEDIVALCA_2,
+            styles: [style_MunicipiosFEDIVALCA_2_0,style_MunicipiosFEDIVALCA_2_1,]
+        });
+        bounds_group.addLayer(layer_MunicipiosFEDIVALCA_2);
+        map.addLayer(layer_MunicipiosFEDIVALCA_2);
+        function pop_reasprioritarias_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Áreas prioritarias</th>\
+                        <td>' + (feature.properties['Áreas prioritarias'] !== null ? autolinker.link(feature.properties['Áreas prioritarias'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Descripción</strong><br />' + (feature.properties['Descripcion'] !== null ? autolinker.link(feature.properties['Descripcion'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_reasprioritarias_3_0() {
+            return {
+                pane: 'pane_reasprioritarias_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,47,54,0.16470588235294117)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_reasprioritarias_3');
+        map.getPane('pane_reasprioritarias_3').style.zIndex = 403;
+        map.getPane('pane_reasprioritarias_3').style['mix-blend-mode'] = 'normal';
+        var layer_reasprioritarias_3 = new L.geoJson(json_reasprioritarias_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_reasprioritarias_3',
+            layerName: 'layer_reasprioritarias_3',
+            pane: 'pane_reasprioritarias_3',
+            onEachFeature: pop_reasprioritarias_3,
+            style: style_reasprioritarias_3_0,
+        });
+        bounds_group.addLayer(layer_reasprioritarias_3);
+        map.addLayer(layer_reasprioritarias_3);
+        function pop_ZEC_4(feature, layer) {
+            var popupContent = '<table>\
+                   <tr>\
+                        <td colspan="2"><strong>Nombre</strong><br />' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Área (Km2)</th>\
+                        <td>' + (feature.properties['Area'] !== null ? autolinker.link(feature.properties['Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Decreto</th>\
+                        <td>' + (feature.properties['Decreto'] !== null ? autolinker.link(feature.properties['Decreto'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ZEC_4_0() {
+            return {
+                pane: 'pane_ZEC_4',
+                opacity: 1,
+                color: 'rgba(181,36,0,0.8941176470588236)',
+                dashArray: '1,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,30,63,0.09019607843137255)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_ZEC_4');
+        map.getPane('pane_ZEC_4').style.zIndex = 404;
+        map.getPane('pane_ZEC_4').style['mix-blend-mode'] = 'normal';
+        var layer_ZEC_4 = new L.geoJson(json_ZEC_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ZEC_4',
+            layerName: 'layer_ZEC_4',
+            pane: 'pane_ZEC_4',
+            onEachFeature: pop_ZEC_4,
+            style: style_ZEC_4_0,
+        });
+        bounds_group.addLayer(layer_ZEC_4);
+        map.addLayer(layer_ZEC_4);
+        function pop_Zepas_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Nombre</strong><br />' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Ficha DGA</strong><br />' + (feature.properties['Ficha DGA'] !== null ? autolinker.link(feature.properties['Ficha DGA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Zepas_5_0() {
+            return {
+                pane: 'pane_Zepas_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,158,23,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Zepas_5');
+        map.getPane('pane_Zepas_5').style.zIndex = 405;
+        map.getPane('pane_Zepas_5').style['mix-blend-mode'] = 'normal';
+        var layer_Zepas_5 = new L.geoJson(json_Zepas_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Zepas_5',
+            layerName: 'layer_Zepas_5',
+            pane: 'pane_Zepas_5',
+            onEachFeature: pop_Zepas_5,
+            style: style_Zepas_5_0,
+        });
+        bounds_group.addLayer(layer_Zepas_5);
+        map.addLayer(layer_Zepas_5);
+        function pop_NucleosdePoblacinFEDIVALCA_6(feature, layer) {
+            var popupContent = '<table>\
+                  <tr>\
+                        <td colspan="2">' + (feature.properties['Termino municipal'] !== null ? autolinker.link(feature.properties['Termino municipal'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Codigo INE</th>\
+                        <td>' + (feature.properties['Codigo Postal'] !== null ? autolinker.link(feature.properties['Codigo Postal'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_NucleosdePoblacinFEDIVALCA_6_0() {
+            return {
+                pane: 'pane_NucleosdePoblacinFEDIVALCA_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,152,152,0.47058823529411764)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_NucleosdePoblacinFEDIVALCA_6');
+        map.getPane('pane_NucleosdePoblacinFEDIVALCA_6').style.zIndex = 406;
+        map.getPane('pane_NucleosdePoblacinFEDIVALCA_6').style['mix-blend-mode'] = 'normal';
+        var layer_NucleosdePoblacinFEDIVALCA_6 = new L.geoJson(json_NucleosdePoblacinFEDIVALCA_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_NucleosdePoblacinFEDIVALCA_6',
+            layerName: 'layer_NucleosdePoblacinFEDIVALCA_6',
+            pane: 'pane_NucleosdePoblacinFEDIVALCA_6',
+            onEachFeature: pop_NucleosdePoblacinFEDIVALCA_6,
+            style: style_NucleosdePoblacinFEDIVALCA_6_0,
+        });
+        bounds_group.addLayer(layer_NucleosdePoblacinFEDIVALCA_6);
+        map.addLayer(layer_NucleosdePoblacinFEDIVALCA_6);
+        function pop_ComarcasFEDIVALCA_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ComarcasFEDIVALCA_7_0() {
+            return {
+                pane: 'pane_ComarcasFEDIVALCA_7',
+                opacity: 1,
+                color: 'rgba(243,211,49,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(243,211,49,0.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_ComarcasFEDIVALCA_7');
+        map.getPane('pane_ComarcasFEDIVALCA_7').style.zIndex = 407;
+        map.getPane('pane_ComarcasFEDIVALCA_7').style['mix-blend-mode'] = 'normal';
+        var layer_ComarcasFEDIVALCA_7 = new L.geoJson(json_ComarcasFEDIVALCA_7, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_ComarcasFEDIVALCA_7',
+            layerName: 'layer_ComarcasFEDIVALCA_7',
+            pane: 'pane_ComarcasFEDIVALCA_7',
+            onEachFeature: pop_ComarcasFEDIVALCA_7,
+            style: style_ComarcasFEDIVALCA_7_0,
+        });
+        bounds_group.addLayer(layer_ComarcasFEDIVALCA_7);
+        map.addLayer(layer_ComarcasFEDIVALCA_7);
+        map.on("zoomend", function(e) {
+            if (map.getZoom() <= 16 && map.getZoom() >= 2) {
+                map.addLayer(layer_Fondogris_1);
+            } else if (map.getZoom() > 16 || map.getZoom() < 2) {
+                map.removeLayer(layer_Fondogris_1);
+            }
+        });
+            if (map.getZoom() <= 16 && map.getZoom() >= 2) {
+                map.addLayer(layer_Fondogris_1);
+            } else if (map.getZoom() > 16 || map.getZoom() < 2) {
+                map.removeLayer(layer_Fondogris_1);
+            }
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topright',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Busca una dirección';
+       
+       
+
+
+        map.addControl(new L.Control.Search({
+            layer: layer_MunicipiosFEDIVALCA_2,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'Municipio'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        resetLabels([layer_NucleosdePoblacinFEDIVALCA_6]);
+        map.on("zoomend", function(){
+            resetLabels([layer_NucleosdePoblacinFEDIVALCA_6]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_NucleosdePoblacinFEDIVALCA_6]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_NucleosdePoblacinFEDIVALCA_6]);
+        });
+
+
+         // Define el HTML de tu leyenda con un título personalizado y los elementos del control de capas le// Define las capas base con algun estilo
+
+         var baseMaps = {};
+        L.control.layers(baseMaps,{
+        '<strong>Nucleos de Población <br><img src="legend/NucleosdePoblacinFEDIVALCA_5.png" /> ':layer_NucleosdePoblacinFEDIVALCA_6,
+        '<strong>Municipios <br><img src="legend/MunicipiosFEDIVALCA_2.png" /> ': layer_MunicipiosFEDIVALCA_2,
+        '<strong>Comarcas <br> <img src="legend/ComarcasFEDIVALCA_3.png" />': layer_ComarcasFEDIVALCA_7,
+        '<strong>Fondo Gris <br> <img src="legend/fondo.svg" />':layer_Fondogris_1,
+        },{collapsed:true}).addTo(map);
+
+// Define el HTML de tu leyenda con un título personalizado y los elementos del control de capas
+var legendHtml = '<div class="info legend" style="background-color: #ffffff; padding: 15px 10px;">' +
+    '<div class="legend-header" onclick="toggleLegend()" style="font-size: 16px;"><span><b>Leyenda</b></span></div>' +
+    '<div class="legend-content">' +
+    '<p><input type="checkbox" id="layer_Zepas_5" onclick="toggleLayer(this.id)" checked> Zonas de Especial <br>Protección para las Aves (ZEPA)<br /><br /><img src="legend/Zepas_5.png" style="width: 28px;"></p>' +
+    '<p><input type="checkbox" id="layer_ZEC_4" onclick="toggleLayer(this.id)" checked> Zona de Especial <br>Conservación (ZEC)<br /><br /><img src="legend/ZEC_4.png" style="width: 28px;"></p>' +
+    '<p><input type="checkbox" id="layer_reasprioritarias_3" onclick="toggleLayer(this.id)" checked> Áreas prioritarias<br /><br /><img src="legend/reasprioritarias_3.png" style="width: 28px;"></p>'+    
+    '</div>' +
+    '</div>';
+
+// Crea un control personalizado de Leaflet que incluye el HTML de la leyenda y el control de capas
+var combinedControl = L.control({
+    position: 'topleft'
+});
+
+combinedControl.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'combined-legend');
+    div.innerHTML = legendHtml;
+    return div;
+};
+
+// Agrega el control combinado al mapa
+combinedControl.addTo(map);
+
+// Define una función para alternar la visibilidad de las capas
+function toggleLayer(layerId) {
+    var layer = eval(layerId);
+    if (map.hasLayer(layer)) {
+        map.removeLayer(layer);
+    } else {
+        map.addLayer(layer);
+    }
+}
+
+// Define una función para alternar la apertura y el cierre de la leyenda
+function toggleLegend() {
+    var legend = document.querySelector('.legend-content');
+    if (legend.style.display === 'none' || legend.style.display === '') {
+        legend.style.display = 'block';
+    } else {
+        legend.style.display = 'none';
+    }
+}
+
+// CSS para hacer el control colapsable y responsive
+var css = '.combined-legend {max-width: 300px; height: 350px; overflow-y: auto; text-align: center; }' +
+    '@media only screen and (max-width: 800px) { .combined-legend .legend-content { display: none; } .combined-legend.collapsed .legend-content { display: block; } }' +
+    '.combined-legend.collapsed .legend-content { display: none; }' +
+    '.legend-header { cursor: pointer; }';
+var style = document.createElement('style');
+style.type = 'text/css';
+if (style.styleSheet) style.styleSheet.cssText = css;
+else style.appendChild(document.createTextNode(css));
+document.getElementsByTagName('head')[0].appendChild(style);
+setBounds();
+
+
+
+
+
+        </script>
+    </body>
+</html>

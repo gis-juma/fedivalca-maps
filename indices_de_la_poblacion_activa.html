@@ -250,7 +250,7 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
                         <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>I. Estructura de la poblacion activa (IS)</strong><br />' + (feature.properties['I. Estructura de la poblacion activa (IS)'] !== null ? autolinker.link(feature.properties['I. Estructura de la poblacion activa (IS)'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Estructura de la poblacion activa (IS)</strong><br />' + (feature.properties['I. Estructura de la poblacion activa (IS)'] !== null ? autolinker.link(feature.properties['I. Estructura de la poblacion activa (IS)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2"><strong>Descripción</strong><br />' + (feature.properties['Descripcion'] !== null ? autolinker.link(feature.properties['Descripcion'].toLocaleString()) : '') + '</td>\
@@ -359,7 +359,7 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
                         <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>I. Remplazo de la actividad</strong><br />' + (feature.properties['I. Remplazo de la actividad'] !== null ? autolinker.link(feature.properties['I. Remplazo de la actividad'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Remplazo de la actividad</strong><br />' + (feature.properties['I. Remplazo de la actividad'] !== null ? autolinker.link(feature.properties['I. Remplazo de la actividad'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2"><strong>Descripción</strong><br />' + (feature.properties['Descripcion'] !== null ? autolinker.link(feature.properties['Descripcion'].toLocaleString()) : '') + '</td>\
@@ -437,7 +437,7 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
                         <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>I. Dependencia Jovenes</strong><br />' + (feature.properties['I. Dependencia Jovenes'] !== null ? autolinker.link(feature.properties['I. Dependencia Jovenes'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Dependencia Jovenes</strong><br />' + (feature.properties['I. Dependencia Jovenes'] !== null ? autolinker.link(feature.properties['I. Dependencia Jovenes'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2"><strong>Descripción</strong><br />' + (feature.properties['Descripcion'] !== null ? autolinker.link(feature.properties['Descripcion'].toLocaleString()) : '') + '</td>\
@@ -515,7 +515,7 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
                         <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>I. Dependencia mayores</strong><br />' + (feature.properties['I. Dependencia mayores'] !== null ? autolinker.link(feature.properties['I. Dependencia mayores'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Dependencia mayores</strong><br />' + (feature.properties['I. Dependencia mayores'] !== null ? autolinker.link(feature.properties['I. Dependencia mayores'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2"><strong>Descripción</strong><br />' + (feature.properties['Descripcion'] !== null ? autolinker.link(feature.properties['Descripcion'].toLocaleString()) : '') + '</td>\
@@ -593,7 +593,7 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
                         <td colspan="2">' + (feature.properties['Comarca'] !== null ? autolinker.link(feature.properties['Comarca'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>I. Dependencia global</strong><br />' + (feature.properties['I. Dependencia global'] !== null ? autolinker.link(feature.properties['I. Dependencia global'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Dependencia global</strong><br />' + (feature.properties['I. Dependencia global'] !== null ? autolinker.link(feature.properties['I. Dependencia global'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2"><strong>Descripción</strong><br />' + (feature.properties['Decripcion'] !== null ? autolinker.link(feature.properties['Decripcion'].toLocaleString()) : '') + '</td>\
@@ -723,35 +723,35 @@ var legendHtml = '<div class="info legend" style="background-color: #ffffff; pad
 
    
     // Índices adicionales
-    '<p><input type="checkbox" id="layer_IDependenciaglobal_8" onclick="toggleLayer(this.id)"> I. Dependencia global<br />' +
+    '<p><input type="checkbox" id="layer_IDependenciaglobal_8" onclick="toggleLayer(this.id)"> Dependencia global<br />' +
     '<table style="margin: 0 auto;">' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDependenciaglobal_8_0500.png" /></td><td style="font-size: 12px; text-align: center;">0 - 50</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDependenciaglobal_8_501001.png" /></td><td style="font-size: 12px; text-align: center;">50 - 100</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDependenciaglobal_8_1001052.png" /></td><td style="font-size: 12px; text-align: center;">100 - 105</td></tr>' +
     '</table></p>' +
 
-    '<p><input type="checkbox" id="layer_IDependenciamayores_7" onclick="toggleLayer(this.id)"> I. Dependencia mayores<br />' +
+    '<p><input type="checkbox" id="layer_IDependenciamayores_7" onclick="toggleLayer(this.id)"> Dependencia mayores<br />' +
     '<table style="margin: 0 auto;">' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDependenciamayores_7_0500.png" /></td><td style="font-size: 12px; text-align: center;">0 - 50</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDependenciamayores_7_501001.png" /></td><td style="font-size: 12px; text-align: center;">50 - 100</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDependenciamayores_7_1001052.png" /></td><td style="font-size: 12px; text-align: center;">100 - 105</td></tr>' +
     '</table></p>' +
 
-    '<p><input type="checkbox" id="layer_IDependenciaJovenes_6" onclick="toggleLayer(this.id)"> I. Dependencia Jovenes<br />' +
+    '<p><input type="checkbox" id="layer_IDependenciaJovenes_6" onclick="toggleLayer(this.id)"> Dependencia Jovenes<br />' +
     '<table style="margin: 0 auto;">' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDependenciaJovenes_6_01140.png" /></td><td style="font-size: 12px; text-align: center;">0 - 11,4</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDependenciaJovenes_6_1141871.png" /></td><td style="font-size: 12px; text-align: center;">11,4 - 18,7</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IDependenciaJovenes_6_1873122.png" /></td><td style="font-size: 12px; text-align: center;">18,7 - 31,2</td></tr>' +
     '</table></p>' +
 
-    '<p><input type="checkbox" id="layer_IRemplazodelaactividad_5" onclick="toggleLayer(this.id)"> I. Remplazo de la actividad<br />' +
+    '<p><input type="checkbox" id="layer_IRemplazodelaactividad_5" onclick="toggleLayer(this.id)"> Remplazo de la actividad<br />' +
     '<table style="margin: 0 auto;">' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IRemplazodelaactividad_5_0330.png" /></td><td style="font-size: 12px; text-align: center;">0 - 33</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IRemplazodelaactividad_5_331001.png" /></td><td style="font-size: 12px; text-align: center;">33 - 100</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IRemplazodelaactividad_5_1003002.png" /></td><td style="font-size: 12px; text-align: center;">100 - 300</td></tr>' +
     '</table></p>' +
 
-    '<p><input type="checkbox" id="layer_IEstructuradelapoblacionactivaIS_4" onclick="toggleLayer(this.id)"checked> I. Estructura de la poblacion activa<br />' +
+    '<p><input type="checkbox" id="layer_IEstructuradelapoblacionactivaIS_4" onclick="toggleLayer(this.id)"checked> Estructura de la poblacion activa<br />' +
     '<table style="margin: 0 auto;">' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IEstructuradelapoblacionactivaIS_4_Poblaciónactivasinestructurajoven0.png" /></td><td style="font-size: 12px; text-align: center;">Población activa sin estructura joven</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IEstructuradelapoblacionactivaIS_4_21421.png" /></td><td style="font-size: 12px; text-align: center;">21 - 42</td></tr>' +

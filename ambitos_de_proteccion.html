@@ -11,23 +11,9 @@
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="css/base.css">
         <link rel="stylesheet" href="css/navMap.css">
-        <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        </style>
+        
         <title> Ámbitos de Protección</title>
     </head>
     <body>
@@ -80,7 +66,7 @@
        
 // Resto del código para configurar el mapa
 var hash = new L.Hash(map);
-map.attributionControl.setPrefix('<a href="https://www.linkedin.com/in/j-f-olivar-londo%C3%B1o" target="_blank"><strong>Autor: Juan Felipe Olivar Londoño</strong></a>  &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+map.attributionControl.setPrefix('<a href="https://www.linkedin.com/in/j-f-olivar-londo%C3%B1o" target="_blank"><strong>Autor: Juan Felipe Olivar Londoño</strong></a>  &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet - qgis2web</a> &middot; <a href="https://qgis.org">QGIS</a>');
 
 var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
 var bounds_group = new L.featureGroup([]);
@@ -122,10 +108,30 @@ map.addLayer(layer_Fondogris_1);
 var watermark = L.Control.extend({
   onAdd: function(map) {
     var watermarkDiv = L.DomUtil.create('div', 'watermark');
-    watermarkDiv.innerHTML = '<img src="legend/LOGOS.png" style="width: 280px;">'; // Ajusta el tamaño según lo necesites
+    watermarkDiv.innerHTML = '<img src="legend/logos.png" style="width: 50%;">'; // Cambia el nombre de la imagen y ajusta el tamaño
     watermarkDiv.style.position = 'absolute';
-    watermarkDiv.style.bottom = '55px'; // Ajusta la distancia desde abajo
-    watermarkDiv.style.right = '20px'; // Ajusta la distancia desde la derecha
+    watermarkDiv.style.bottom = '2%'; // Ajusta la distancia desde abajo
+    watermarkDiv.style.right = '2%'; // Ajusta la distancia desde la derecha
+    watermarkDiv.style.paddingBottom = '28px'; // Ajusta el padding inferior
+    watermarkDiv.style.textAlign = 'right'; // Alinea el contenido a la derecha
+    watermarkDiv.style.pointerEvents = 'none';
+    return watermarkDiv;
+  },
+  onRemove: function(map) {
+    // Nothing to do here
+  }
+});
+
+
+var watermark = L.Control.extend({
+  onAdd: function(map) {
+    var watermarkDiv = L.DomUtil.create('div', 'watermark');
+    watermarkDiv.innerHTML = '<img src="legend/logos.png" style="width: 55%;">'; // Cambia el nombre de la imagen y ajusta el tamaño
+    watermarkDiv.style.position = 'absolute';
+    watermarkDiv.style.bottom = '2%'; // Ajusta la distancia desde abajo
+    watermarkDiv.style.right = '2%'; // Ajusta la distancia desde la derecha
+    watermarkDiv.style.paddingBottom = '28px'; // Ajusta el padding inferior
+    watermarkDiv.style.textAlign = 'right'; // Alinea el contenido a la derecha
     watermarkDiv.style.pointerEvents = 'none';
     return watermarkDiv;
   },
@@ -460,17 +466,24 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
         });
 
 
+         // Define el HTML de tu leyenda con un título personalizado y los elementos del control de capas le// Define las capas base con algun estilo
+
+         var baseMaps = {};
+        L.control.layers(baseMaps,{
+        '<strong>Nucleos de Población <br><img src="legend/NucleosdePoblacinFEDIVALCA_5.png" /> ':layer_NucleosdePoblacinFEDIVALCA_6,
+        '<strong>Municipios <br><img src="legend/MunicipiosFEDIVALCA_2.png" /> ': layer_MunicipiosFEDIVALCA_2,
+        '<strong>Comarcas <br> <img src="legend/ComarcasFEDIVALCA_3.png" />': layer_ComarcasFEDIVALCA_7,
+        '<strong>Fondo Gris <br> <img src="legend/fondo.svg" />':layer_Fondogris_1,
+        },{collapsed:true}).addTo(map);
+
 // Define el HTML de tu leyenda con un título personalizado y los elementos del control de capas
 var legendHtml = '<div class="info legend" style="background-color: #ffffff; padding: 15px 10px;">' +
     '<div class="legend-header" onclick="toggleLegend()" style="font-size: 16px;"><span><b>Leyenda</b></span></div>' +
     '<div class="legend-content">' +
-    '<p><input type="checkbox" id="layer_Zepas_5" onclick="toggleLayer(this.id)" checked> Zepas<br /><br /><img src="legend/Zepas_5.png" style="width: 28px;"></p>' +
-    '<p><input type="checkbox" id="layer_ZEC_4" onclick="toggleLayer(this.id)" checked> ZEC<br /><br /><img src="legend/ZEC_4.png" style="width: 28px;"></p>' +
-    '<p><input type="checkbox" id="layer_reasprioritarias_3" onclick="toggleLayer(this.id)" checked> Áreas prioritarias<br /><br /><img src="legend/reasprioritarias_3.png" style="width: 28px;"></p>' +
-    '<p><input type="checkbox" id="layer_NucleosdePoblacinFEDIVALCA_6" onclick="toggleLayer(this.id)" checked> Núcleos de Población<br /><br /><img src="legend/NucleosdePoblacinFEDIVALCA_5.png" style="width: 28px;"></p>' +
-    '<p><input type="checkbox" id="layer_MunicipiosFEDIVALCA_2" onclick="toggleLayer(this.id)" checked> Municipios<br /><br /><img src="legend/MunicipiosFEDIVALCA_2.png" style="width: 28px;"></p>' +
-    '<p><input type="checkbox" id="layer_ComarcasFEDIVALCA_7" onclick="toggleLayer(this.id)" checked> Comarcas<br /><br /><img src="legend/ComarcasFEDIVALCA_7.png" style="width: 28px;"></p>' +
-    '<p><input type="checkbox" id="layer_Fondogris_1" onclick="toggleLayer(this.id)"checked> Fondo gris<br /><img src="legend/FONDO.svg" style="width: 75px;"></p>'+    '</div>' +
+    '<p><input type="checkbox" id="layer_Zepas_5" onclick="toggleLayer(this.id)" checked> Zonas de Especial <br>Protección para las Aves (ZEPA)<br /><br /><img src="legend/Zepas_5.png" style="width: 28px;"></p>' +
+    '<p><input type="checkbox" id="layer_ZEC_4" onclick="toggleLayer(this.id)" checked> Zona de Especial <br>Conservación (ZEC)<br /><br /><img src="legend/ZEC_4.png" style="width: 28px;"></p>' +
+    '<p><input type="checkbox" id="layer_reasprioritarias_3" onclick="toggleLayer(this.id)" checked> Áreas prioritarias<br /><br /><img src="legend/reasprioritarias_3.png" style="width: 28px;"></p>'+    
+    '</div>' +
     '</div>';
 
 // Crea un control personalizado de Leaflet que incluye el HTML de la leyenda y el control de capas

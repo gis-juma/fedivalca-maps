@@ -4,7 +4,7 @@
 <svg
    width="512"
    height="512"
-   viewBox="0 0 512 512"
+   viewBox="0 0 563.2 563.2"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
@@ -57,7 +57,7 @@
        fy="133.59181"
        r="232.3418"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.86424438,0.03077868,-0.02814906,0.79040616,38.281649,62.572516)" />
+       gradientTransform="matrix(0.86424438,0.03077868,-0.02814906,0.79040616,66.075936,91.82966)" />
   </defs>
   <g
      inkscape:label="Capa 1"
@@ -73,8 +73,8 @@
     <ellipse
        style="fill:url(#radialGradient1450);fill-opacity:1;stroke:#000000;stroke-width:0.991241;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
        id="path996"
-       cx="255.33505"
-       cy="259.32468"
+       cx="283.12933"
+       cy="288.58182"
        rx="176.31204"
        ry="176.31216" />
     <style

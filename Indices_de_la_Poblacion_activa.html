@@ -11,22 +11,9 @@
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="css/base.css">
         <link rel="stylesheet" href="css/navMap.css">
-        <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        </style>
+      
         <title>Índices de la población activa</title>
     </head>
     <body>
@@ -79,7 +66,7 @@
       
 // Resto del código para configurar el mapa
 var hash = new L.Hash(map);
-map.attributionControl.setPrefix('<a href="https://www.linkedin.com/in/j-f-olivar-londo%C3%B1o" target="_blank"><strong>Autor: Juan Felipe Olivar Londoño</strong></a>  &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+map.attributionControl.setPrefix('<a href="https://www.linkedin.com/in/j-f-olivar-londo%C3%B1o" target="_blank"><strong>Autor: Juan Felipe Olivar Londoño</strong></a>  &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet - qgis2web</a> &middot; <a href="https://qgis.org">QGIS</a>');
 
 var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
 var bounds_group = new L.featureGroup([]);
@@ -121,10 +108,12 @@ map.addLayer(layer_Fondogris_1);
 var watermark = L.Control.extend({
   onAdd: function(map) {
     var watermarkDiv = L.DomUtil.create('div', 'watermark');
-    watermarkDiv.innerHTML = '<img src="legend/LOGOS.png" style="width: 280px;">'; // Ajusta el tamaño según lo necesites
+    watermarkDiv.innerHTML = '<img src="legend/logos.png" style="width: 55%;">'; // Cambia el nombre de la imagen y ajusta el tamaño
     watermarkDiv.style.position = 'absolute';
-    watermarkDiv.style.bottom = '55px'; // Ajusta la distancia desde abajo
-    watermarkDiv.style.right = '20px'; // Ajusta la distancia desde la derecha
+    watermarkDiv.style.bottom = '2%'; // Ajusta la distancia desde abajo
+    watermarkDiv.style.right = '2%'; // Ajusta la distancia desde la derecha
+    watermarkDiv.style.paddingBottom = '28px'; // Ajusta el padding inferior
+    watermarkDiv.style.textAlign = 'right'; // Alinea el contenido a la derecha
     watermarkDiv.style.pointerEvents = 'none';
     return watermarkDiv;
   },
@@ -138,7 +127,6 @@ L.control.watermark = function(opts) {
 }
 
 L.control.watermark({ position: 'bottomright' }).addTo(map);
-
 
         function pop_MunicipiosFEDIVALCA_2(feature, layer) {
             var popupContent = '<table>\
@@ -717,6 +705,16 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
             resetLabels([layer_IEstructuradelapoblacionactivaIS_4,layer_IRemplazodelaactividad_5,layer_IDependenciaJovenes_6,layer_IDependenciamayores_7,layer_IDependenciaglobal_8]);
         });
 
+ // Define el HTML de tu leyenda con un título personalizado y los elementos del control de capas le// Define las capas base con algun estilo
+
+ var baseMaps = {};
+        L.control.layers(baseMaps,{
+        '<strong>Comarcas <br> <img src="legend/ComarcasFEDIVALCA_3.png" /> ': layer_ComarcasFEDIVALCA_3,
+        '<strong>Municipios <br> <img src="legend/MunicipiosFEDIVALCA_2.png" />': layer_MunicipiosFEDIVALCA_2,
+        '<strong> Fondo Gris <br><img src="legend/fondo.svg" />':layer_Fondogris_1,
+      },{collapsed:true}).addTo(map);
+
+
 
       // Define el HTML de tu leyenda con un título personalizado y los elementos del control de capas
 var legendHtml = '<div class="info legend" style="background-color: #ffffff; padding: 15px 10px;">' +
@@ -753,7 +751,7 @@ var legendHtml = '<div class="info legend" style="background-color: #ffffff; pad
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IRemplazodelaactividad_5_1003002.png" /></td><td style="font-size: 12px; text-align: center;">100 - 300</td></tr>' +
     '</table></p>' +
 
-    '<p><input type="checkbox" id="layer_IEstructuradelapoblacionactivaIS_4" onclick="toggleLayer(this.id)"> I. Estructura de la poblacion activa<br />' +
+    '<p><input type="checkbox" id="layer_IEstructuradelapoblacionactivaIS_4" onclick="toggleLayer(this.id)"checked> I. Estructura de la poblacion activa<br />' +
     '<table style="margin: 0 auto;">' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IEstructuradelapoblacionactivaIS_4_Poblaciónactivasinestructurajoven0.png" /></td><td style="font-size: 12px; text-align: center;">Población activa sin estructura joven</td></tr>' +
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IEstructuradelapoblacionactivaIS_4_21421.png" /></td><td style="font-size: 12px; text-align: center;">21 - 42</td></tr>' +
@@ -762,11 +760,7 @@ var legendHtml = '<div class="info legend" style="background-color: #ffffff; pad
     '<tr><td style="text-align: center; font-size: 12px;"><img src="legend/IEstructuradelapoblacionactivaIS_4_73844.png" /></td><td style="font-size: 12px; text-align: center;">73 - 84</td></tr>' +
     '</table></p>' +
 
-    // Otros
-    '<p><input type="checkbox" id="layer_NucleosdePoblacinFEDIVALCA_8" onclick="toggleLayer(this.id)" checked> Núcleos de Población<br /><table style="margin: 0 auto;"><tr><td style="text-align: center;"><img src="legend/NucleosdePoblacinFEDIVALCA_8.png" style="width: 28px;"></td></tr></table></p>' +
-    '<p><input type="checkbox" id="layer_MunicipiosFEDIVALCA_2" onclick="toggleLayer(this.id)" checked> Municipios<br /><table style="margin: 0 auto;"><tr><td style="text-align: center;"><img src="legend/MunicipiosFEDIVALCA_2.png" style="width: 28px;"></td></tr></table></p>' +
-    '<p><input type="checkbox" id="layer_ComarcasFEDIVALCA_3" onclick="toggleLayer(this.id)" checked> Comarcas<br /><table style="margin: 0 auto;"><tr><td style="text-align: center;"><img src="legend/ComarcasFEDIVALCA_3.png" style="width: 28px;"></td></tr></table></p>' +
-    '<p><input type="checkbox" id="layer_Fondogris_1" onclick="toggleLayer(this.id)" checked> Fondo gris<br /><img src="legend/FONDO.svg" style="width: 75px;"></p>' +
+    
     '</div>' +
     '</div>';
 

@@ -4,11 +4,11 @@
 <svg
    width="512"
    height="512"
-   viewBox="0 0 512 512"
+   viewBox="0 0 614.4 614.4"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
-   sodipodi:docname="Burbuja_D_.svg"
+   sodipodi:docname="PoblacinmayoritariaFemeninaEnvejecida_12.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -57,7 +57,7 @@
        fy="148.32466"
        r="232.3418"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.177904,-0.20027552,0.16049332,0.9439283,-66.057362,58.290064)" />
+       gradientTransform="matrix(1.177904,-0.20027552,0.16049332,0.9439283,-7.3788859,116.96854)" />
   </defs>
   <g
      inkscape:label="Capa 1"
@@ -71,10 +71,10 @@
        rx="239.37662"
        ry="271.29352" />
     <circle
-       style="fill:url(#radialGradient1450);stroke:#ffffff;stroke-width:1.2;stroke-opacity:0.56113535;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:url(#radialGradient1450);fill-opacity:1;stroke:#ffffff;stroke-width:1.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.561135"
        id="path996"
-       cx="250.68053"
-       cy="248.02077"
+       cx="309.35901"
+       cy="306.69925"
        r="213.44415" />
   </g>
 </svg>

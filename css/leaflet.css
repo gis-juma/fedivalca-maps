@@ -369,9 +369,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	position: relative;
 	}
 .leaflet-control-layers-expanded {
-	padding: 6px 10px 6px 6px;
-	color: #333;
-	background: #fff;
+	padding: 10px 10px 6px 6px;
+	color: #1c1c1cfc;
+	background: #ffffffcf;
+	text-align: center;
+	font-size: 12px;
 	}
 .leaflet-control-layers-scrollbar {
 	overflow-y: scroll;

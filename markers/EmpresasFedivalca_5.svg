@@ -4,7 +4,7 @@
 <svg
    width="512"
    height="512"
-   viewBox="0 0 512 512"
+   viewBox="0 0 563.2 563.2"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
@@ -57,7 +57,7 @@
        fy="148.32466"
        r="232.3418"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.71776911,-0.12204015,0.09779842,0.57519338,54.851635,144.6309)" />
+       gradientTransform="matrix(0.71776911,-0.12204015,0.09779842,0.57519338,88.140388,166.07111)" />
   </defs>
   <g
      inkscape:label="Capa 1"
@@ -73,8 +73,8 @@
     <circle
        style="fill:url(#radialGradient1450);fill-opacity:1;stroke:#ffffff;stroke-width:0.974978;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50655"
        id="path996"
-       cx="247.85944"
-       cy="260.24545"
+       cx="281.14819"
+       cy="281.68564"
        r="130.06461" />
   </g>
 </svg>

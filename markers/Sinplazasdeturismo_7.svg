@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 563.2 563.2"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="Sinplazasdeturismo_7.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.7519531"
+     inkscape:cx="463.45976"
+     inkscape:cy="449.49612"
+     inkscape:window-width="1920"
+     inkscape:window-height="974"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1448-1">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.96069872"
+         offset="0"
+         id="stop1444" />
+      <stop
+         style="stop-color:#cccccc;stop-opacity:0.9847973"
+         offset="1"
+         id="stop1446" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1448-1"
+       id="radialGradient1450"
+       cx="195.7589"
+       cy="133.59181"
+       fx="195.7589"
+       fy="133.59181"
+       r="232.3418"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.86424438,0.03077868,-0.02814906,0.79040616,66.075936,91.82966)" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:none;stroke:#cace3a;stroke-width:37.7953;stroke-opacity:0"
+       id="path846"
+       cx="77.132469"
+       cy="33.246754"
+       rx="239.37662"
+       ry="271.29352" />
+    <ellipse
+       style="fill:url(#radialGradient1450);fill-opacity:1;stroke:#000000;stroke-width:0.991241;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       id="path996"
+       cx="283.12933"
+       cy="288.58182"
+       rx="176.31204"
+       ry="176.31216" />
+    <style
+       id="style827">
+.MsftOfcThm_Background2_lumMod_25_Fill_v2 {
+ fill:#3B3838; 
+}
+</style>
+  </g>
+</svg>

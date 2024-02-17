@@ -264,7 +264,7 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
         function pop_ZEC_4(feature, layer) {
             var popupContent = '<table>\
                    <tr>\
-                        <td colspan="2"><strong>Nombre</strong><br />' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Nombre (ZEC)</strong><br />' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Área (Km2)</th>\
@@ -310,7 +310,7 @@ L.control.watermark({ position: 'bottomright' }).addTo(map);
         function pop_Zepas_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong>Nombre</strong><br />' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Nombre (Zepa)</strong><br />' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2"><strong>Ficha DGA</strong><br />' + (feature.properties['Ficha DGA'] !== null ? autolinker.link(feature.properties['Ficha DGA'].toLocaleString()) : '') + '</td>\
